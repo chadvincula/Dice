@@ -14,29 +14,45 @@ import java.io.IOException;
 
 public class Dice extends PApplet {
 
+Die dice;
+int total;
+String rollTotal;
+
 public void setup()
 {
 	noLoop();
 	size(400, 400);
 }
+
 public void draw()
 {
 	//your code here
+	total = 0;
 	background(0, 255, 0);
-	for(int j = 0; j <= 400; j += 45)
+	for(int j = 40; j <= 400; j += 45)
 	{
 		for(int i = 0; i <= 400; i += 45)
 		{
-			Die dice = new Die(i, j);
+			dice = new Die(i, j);
 			dice.show();
-			dice.roll();
+			total += dice.myRoll;
+			rollTotal = "" + total;
 		}
 	}
+	//Roll Total
+	fill(0);
+	rect(140, 5, 120, 30);
+	fill(255);
+	textSize(16);
+	textAlign(CENTER,BASELINE);
+	text("Roll Total: " + rollTotal, 200, 30);
 }
+
 public void mousePressed()
 {
 	redraw();
 }
+
 class Die //models one single dice cube
 {
 	//variable declarations here
@@ -46,7 +62,7 @@ class Die //models one single dice cube
 		//variable initializations here
 		myX = x;
 		myY = y;
-		myRoll = 6;
+		roll();
 	}
 	public void roll()
 	{
