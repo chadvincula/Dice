@@ -29,7 +29,7 @@ public void draw()
 	//your code here
 	total = 0;
 	background(0, 255, 0);
-	for(int j = 40; j <= 400; j += 45)
+	for(int j = 40; j <= 360; j += 45)
 	{
 		for(int i = 0; i <= 400; i += 45)
 		{
